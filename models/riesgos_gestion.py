@@ -12,21 +12,21 @@ riegosgestion = Table("riegos-gestion", meta,
                       Column("descripcionOportunidad", String(255)),
                       Column("accion", String(255)),
                       Column("responsable", String(255)),
-                      Column("fechaSeguimiento", Date),
+                      Column("fechaSeguimientoPrimerT", Date),
                       Column("seguimientoPrimerTrimestre", String(255)),
-                      Column("fechaSeguimiento", Date),
+                      Column("fechaSeguimientoSegundoT", Date),
                       Column("seguimientoSegundoTrimestre", String(255)),
-                      Column("fechaSeguimiento", Date),
+                      Column("fechaSeguimientoTecerT", Date),
                       Column("seguimientoTercerTrimestre", String(255)),
-                      Column("fechaSeguimiento", Date),
+                      Column("fechaSeguimientoCuartoT", Date),
                       Column("seguimientoCuartoTrimestre", String(255)),
                       Column("Estado", String(255)),
-                      Column("fechaSeguimiento", Date),
+                      Column("fechaSeguimientoCyS", Date),
                       Column("SeguimientoControlySportes", String(255)),
                       Column("SeguimientoPlanManejoOportunidadesySoportes", String(255)),
-                      Column("fechaSeguimiento", Date),
+                      Column("fechaSeguimientoPlanManejo", Date),
                       Column("SeguimentoPlanManejoOportunidades", String(255)),
-                      Column("Estado", String(255))
+                      Column("EstadoFinal", String(255))
                       )
 
 meta.create_all(engine)
