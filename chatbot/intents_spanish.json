@@ -1,0 +1,39 @@
+{
+    "intents":[
+        {
+            "tag": "saludo",
+            "patterns": ["Hola", "Buenos días", "Buenas tardes"],
+            "responses": ["¡Hola!, ¿Como puedo ayudarte hoy?", "¡ buenas!, ¿Que necesitas?"]
+        },
+        {
+            "tag": "saludo2",
+            "patterns": ["Que tal", "Saludos", "Buenas"],
+            "responses": ["¡Hola!, ¿Como puedo ayudarte hoy?", "¡ buenas!, ¿Que necesitas?"]
+        },
+        {
+            "tag": "preguntas1",
+            "patterns": ["registo de riegos de gestión", "riego gestion", "donde subo los datos de riego de gestion", "dendeo o como corrijo los datos de riego de gestión"],
+            "responses": ["todo lo relacionado con riego de gestión se encuentra en la página de inico dando click en el botón Riesgo de gestión"]
+        },
+        {
+            "tag": "subir_achivos",
+            "patterns": ["como subo archivos de excel", "Tengo archivos en excel, ¿que hago?", "subir archivos", "Excel"],
+            "responses": ["Para Subir Archivos en Excel, en la página de inico, dar click izquierdo en sección, añadir información, para después subir el archivo de excel en especifico dando click izquierdo y seleccionando el archivo o arrastrandolo, solo lo paodra hacer un administrador"]
+        },
+        {
+            "tag": "despedida",
+            "patterns": ["gracias", "Muchas gracias", "adiós", "hasta luego", "nos vemos", "Estamos hablando"],
+            "responses": ["¡Adiós!, vuelva pronto", "Un placer poder ayudarle", "¡Que tenga un buen día!"]
+        },
+        {
+            "tag": "horario",
+            "patterns": ["¿Cuando abren?", "tienen abierto", "a que horas cierran?", "aque dias tienen servicio", "Que horarios manejan", "abren a ", "tienen servicio", "Horario de atención"],
+            "responses": ["L-V de 5pm  a 8 pm y  Sábado 11 am a 10 pm"]
+        }, 
+        {
+            "tag": "problemas",
+            "patterns": ["No puedo entrar a mi cuenta", "Cambio de rol", "no  puedo ingresar", "No puedo subir archivos", "Cambio de contraseña", "cambio de usuario", "contraseña perdida", ""],
+            "responses": ["Por favor contar a suppordummy@gmail.com o llamar al +57 1234567890, lo antes posible, para dar solución al problema"]
+        }
+    ]
+}
