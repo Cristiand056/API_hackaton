@@ -5,6 +5,7 @@ from fastapi import APIRouter, Depends, File, HTTPException, Path, UploadFile
 from config.db import SessionLocal, conn
 from models.riesgos_gestion import riegosgestion, GestionRiesgos 
 from schemas.gestion_riesgos import GestionRiesgosSchema
+from schemas.gestion_riesgos_update import GestionRiesgosSchemaUpdate 
 from convertidor.excel_to_sql import covertir
 from sqlalchemy.orm import Session
 
@@ -46,8 +47,6 @@ async def get_riesgos_gestion_referencia(referencia_ingresada):
 async def crear_riesgos_gestion(gestionries: GestionRiesgosSchema):
     db = SessionLocal()
     
-    db_dependency = Annotated[Session, Depends(db)]
-    
     #"responable" :bcrypt.hashpw(gestionries.responsable.encode('utf-8'), sal),
     try:     
         """
@@ -57,8 +56,7 @@ async def crear_riesgos_gestion(gestionries: GestionRiesgosSchema):
         created_id = result.inserted_primary_key
         
         return {"message": "Registro creado exitosamente", "id": created_id}
-        """ 
-        
+        """    
         intento2 = GestionRiesgos(**gestionries.dict())
         db.add(intento2)
         db.commit()
@@ -71,9 +69,27 @@ async def crear_riesgos_gestion(gestionries: GestionRiesgosSchema):
     finally:
         db.close()
 
-@gestion.put("/riesgosgestion-actualizacion")
-async def del_riesgos_gestion():
-    return "update no implementado aún"
+
+@gestion.patch("/riesgosgestion-act/{referencia_ingresada}")
+async def del_riesgos_gestion(referencia_ingresada, update_referencia:GestionRiesgosSchemaUpdate):
+    db = SessionLocal()
+    try:     
+        act_referencia = db.query(GestionRiesgos).filter(GestionRiesgos.referencia==referencia_ingresada).first()
+        if act_referencia is None:
+            HTTPException(status_code=404, detail="Referencia no encontrada")
+        
+        for key,value in update_referencia.dict(exclude_unset = True).items():
+            setattr(act_referencia, key, value)
+
+        db.commit()
+        return" Referencia actualizada"
+            
+        
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=f"Error no se encuentra el registro: {str(e)}")
+    finally:
+        db.close()
 
 @gestion.delete("/riesgosgestion-borrado/{referencia_ingresada}")
 async def del_riesgos_gestion(referencia_ingresada):
