@@ -1,21 +1,17 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from models.users import users
 from config.db import conn
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
 user = APIRouter()
 
-@user.get("/users-ver")
-def helloworld():
-    return conn.execute(users.select()).fetchall()
+oauth2_scheme = OAuth2PasswordBearer("/token")
 
-@user.post("/users-crear")
-def helloworld():
-    return "Hello world"
+@user.post("/token")
+def login(form_data: OAuth2PasswordRequestForm = Depends()):
+    print(form_data.username, form_data.password)
+    return {
+        "access_token": "Toamtito",
+        "token_type":"bearer"
+    }
 
-@user.get("/users")
-def helloworld():
-    return "Hello world"
-
-@user.get("/users")
-def helloworld():
-    return "Hello world"

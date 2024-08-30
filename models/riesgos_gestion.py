@@ -29,6 +29,7 @@ class GestionRiesgos(Base):
     seguimento_plan_manejo_oportunidades = Column(String(255))
     estado_final = Column(String(255))
 
+#Base.metadata.create_all(bind=engine)
 
 meta = MetaData()
 riegosgestion = Table(
