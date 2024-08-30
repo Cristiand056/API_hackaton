@@ -1,13 +1,14 @@
 from fastapi import APIRouter
-from models import users
+from models.users import users
+from config.db import conn
 
 user = APIRouter()
 
-@user.get("/users")
+@user.get("/users-ver")
 def helloworld():
-    return "Hello world"
+    return conn.execute(users.select()).fetchall()
 
-@user.get("/users")
+@user.post("/users-crear")
 def helloworld():
     return "Hello world"
 
