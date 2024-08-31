@@ -21,7 +21,7 @@ async def get_riegos_corrupcion(db: Session = Depends(get_db)):
         db.close()
         
 @corrupcion.get("/ver-riesgos-corrupcion-referencia/{referencia_ingresada}")
-async def get_riesgos_gestion_referencia(referencia_ingresada):
+async def get_riesgos_gestion_referencia(referencia_ingresada, db: Session = Depends(get_db)):
     db = SessionLocal()
     try:     
         consulta = db.query(GestionCorrupcion).filter(GestionCorrupcion.referencia==referencia_ingresada).first()

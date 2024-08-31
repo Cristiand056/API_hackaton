@@ -6,7 +6,7 @@ from config.db import meta, engine, Base
 class Oportunidad(Base):
     __tablename__ = 'oportunidades'
 
-    referencia_identificacion = Column(Integer, primary_key=True, autoincrement=True)
+    referencia = Column(Integer, primary_key=True, autoincrement=True)
     proceso_identificacion = Column(String(255))
     objetivo_identificacion = Column(String(255))
     alcance_identificacion = Column(String(255))
