@@ -10,6 +10,7 @@ class GestionRiesgosSchemaUpdate(BaseModel):
     descripcion_oportunidad: str | None = None
     accion: str | None = None
     responsable: str | None = None
+    fecha_programada: date | None = None
     fecha_seguimiento_primert: date | None = None
     seguimiento_primer_trimestre: str | None = None
     fecha_seguimiento_segundot: date | None = None

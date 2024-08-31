@@ -1,0 +1,14 @@
+python==3.11
+fastapi
+mypy-extensions
+openpyxl
+pathspec
+pycparser
+pydantic
+PyMySQL
+SQLAlchemy
+typing-extensions
+uvicorn
+python-jose
+autopep8 
+passlib

@@ -1,4 +1,3 @@
-from typing import Optional
 from pydantic import BaseModel
 from datetime import date
 
@@ -12,6 +11,7 @@ class GestionRiesgosSchema(BaseModel):
     descripcion_oportunidad:str
     accion:str
     responsable:str
+    fecha_programada:date 
     fecha_seguimiento_primert:date
     seguimiento_primer_trimestre:str
     fecha_seguimiento_segundot:date

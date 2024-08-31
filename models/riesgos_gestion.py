@@ -3,7 +3,7 @@ from sqlalchemy.sql.sqltypes import Integer, String, Date
 from config.db import meta, engine, Base
 
 class GestionRiesgos(Base):
-    __tablename__ = "riegos_gestion"
+    __tablename__ = "riesgos_gestion"
     referencia = Column(Integer, primary_key=True, autoincrement=True)
     proceso = Column(String(255))
     objetivo = Column(String(255))
@@ -13,6 +13,7 @@ class GestionRiesgos(Base):
     descripcion_oportunidad = Column(String(255))
     accion = Column(String(255))
     responsable = Column(String(255))
+    fecha_programada = Column(Date)
     fecha_seguimiento_primert = Column(Date)
     seguimiento_primer_trimestre = Column(String(255))
     fecha_seguimiento_segundot = Column(Date)
@@ -29,9 +30,9 @@ class GestionRiesgos(Base):
     seguimento_plan_manejo_oportunidades = Column(String(255))
     estado_final = Column(String(255))
 
-#Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 
-meta = MetaData()
+"""meta = MetaData()
 riegosgestion = Table(
     "riegos_gestion", meta,
     Column("referencia", Integer, primary_key=True, autoincrement=True),
@@ -59,4 +60,4 @@ riegosgestion = Table(
     Column("seguimento_plan_manejo_oportunidades", String(255)),
     Column("estado_final", String(255))
 )
-meta.create_all(engine)
+meta.create_all(engine)"""
