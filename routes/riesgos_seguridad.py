@@ -1,17 +1,16 @@
-from fastapi import APIRouter
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
 import pandas as pd
 from config.db import SessionLocal, get_db, engine
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from models.riesgo_corrupcion import GestionCorrupcion
+from models.riesgos_seguridad import RiesgosSeguridad
 
-corrupcion = APIRouter()
+seguridad = APIRouter()
 
-@corrupcion.get("/ver-riesgos-corrupcion")
-async def get_riegos_corrupcion(db: Session = Depends(get_db)):
+@seguridad.get("riesgos-seguridad-ver")
+async def get_seguridad(db: Session = Depends(get_db)):
     try:     
-        lista = db.query(GestionCorrupcion).all()
+        lista = db.query(RiesgosSeguridad).all()
         return lista
         
     except Exception as e:
@@ -20,11 +19,11 @@ async def get_riegos_corrupcion(db: Session = Depends(get_db)):
     finally:
         db.close()
         
-@corrupcion.get("/ver-riesgos-corrupcion-referencia/{referencia_ingresada}")
+seguridad.get("/riesgos-seguridad-ver-referencia/{referencia_ingresada}")
 async def get_riesgos_gestion_referencia(referencia_ingresada):
     db = SessionLocal()
     try:     
-        consulta = db.query(GestionCorrupcion).filter(GestionCorrupcion.referencia==referencia_ingresada).first()
+        consulta = db.query(RiesgosSeguridad).filter(RiesgosSeguridad.referencia==referencia_ingresada).first()
         if consulta is None:
             HTTPException(status_code=404, detail="Referencia no encontrada")
         else:
