@@ -3,7 +3,7 @@ from datetime import date
 from typing import Optional
 
 class RiesgosSeguridadSchema(BaseModel):
-    referencia: Optional[str]
+    referencia: Optional[int]
     proceso: Optional[str]
     objetivo: Optional[str]
     alcance: Optional[str]

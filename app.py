@@ -4,6 +4,7 @@ from routes.riesgos_gestion import gestion
 from routes.user import user
 from routes.riesgos_corrupcion import corrupcion
 from routes.riesgos_seguridad import seguridad
+from routes.oportunidades import opor
 
 app = FastAPI()
 
@@ -12,5 +13,6 @@ app.include_router(user)
 app.include_router(gestion)
 app.include_router(corrupcion)
 app.include_router(seguridad)
+app.include_router(opor)
 
 
